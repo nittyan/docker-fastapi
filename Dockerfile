@@ -1,8 +1,7 @@
 FROM python:3.9.7-bullseye
 
-#RUN apt list --upgradable
-#RUN apt update \
-#    && apt upgrade
+RUN apt update \
+    && yes | apt upgrade
 
 COPY main.py .
 COPY gunicorn_conf.py .
