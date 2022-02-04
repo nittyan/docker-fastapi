@@ -1,14 +1,14 @@
 version: 0.2
 
-#env:
-#  parameter-store:
-#    repository: "ECR_REPOSITORY"
+env:
+  parameter-store:
+    repository: "ECR_REPOSITORY"
 
 phases:
   install:
     python: 3.9
   pre_build:
-#    - echo ${repository}
+    - echo ${repository}
     - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin ${repository}
   build:
     commands:
