@@ -14,6 +14,7 @@ phases:
   build:
     commands:
       - docker build . -t dockekr-fastapi
+      - docker images
       - docker tag docker-fastapi:latest ${repository}/docker-fastapi:latest
       - docker tag docker-fastapi:latest ${repository}/docker-fastapi:$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
