@@ -14,9 +14,9 @@ phases:
   build:
     commands:
       - docker build . -t docker-fastapi
-      - docker tag docker-fastapi:latest ${repository}/docker-fastapi:latest
-      - docker tag docker-fastapi:latest ${repository}/docker-fastapi:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker tag docker-fastapi:latest ${repository}:latest
+      - docker tag docker-fastapi:latest ${repository}:$CODEBUILD_RESOLVED_SOURCE_VERSION
   post_build:
     commands:
-      - docker push ${repository}/docker-fastapi:latest
-      - docker push ${repository}/docker-fastapi:$CODEBUILD_RESOLVED_SOURCE_VERSION
+      - docker push ${repository}:latest
+      - docker push ${repository}:$CODEBUILD_RESOLVED_SOURCE_VERSION
