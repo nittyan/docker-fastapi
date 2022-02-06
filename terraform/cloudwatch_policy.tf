@@ -14,6 +14,9 @@ data "aws_iam_policy_document" "cloudwatch_policy_document" {
 resource "aws_iam_policy" "cloudwatch_policy" {
   name = "${local.project_name}-cloudwatch-policy"
   policy = data.aws_iam_policy_document.cloudwatch_policy_document.json
+  tags = {
+    "created_by": "terraform"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "cloudwatch_policy_attachment" {

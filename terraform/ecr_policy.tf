@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "ecr_push_policy_document" {
       "ecr:UploadLayerPart"
     ]
     resources = [
-      "*"
+      aws_ecr_repository.repository.arn
     ]
   }
 }
@@ -23,6 +23,9 @@ data "aws_iam_policy_document" "ecr_push_policy_document" {
 resource "aws_iam_policy" "ecr_push_policy" {
   name = "${local.project_name}-ecr-push-policy"
   policy = data.aws_iam_policy_document.ecr_push_policy_document.json
+  tags = {
+    "created_by": "terraform"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ecr_push_policy_attachment" {

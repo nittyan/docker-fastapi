@@ -12,6 +12,9 @@ data "aws_iam_policy_document" "ssm_policy_document" {
 resource "aws_iam_policy" "ssm_policy" {
   name = "${local.project_name}-ssm-policy"
   policy = data.aws_iam_policy_document.ssm_policy_document.json
+  tags = {
+    "created_by": "terraform"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ssm_policy_attachment" {
