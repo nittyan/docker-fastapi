@@ -11,7 +11,7 @@ docker login
 docker build . -t docker-fastapi:1
 
 ## exec
-docker run -d -p 8000:8000 dockerk-fastapi:1
+docker run -d -p 8000:8000 docker-fastapi:1
 
 ## stop
 docker stop <<CONTAINER ID>>
